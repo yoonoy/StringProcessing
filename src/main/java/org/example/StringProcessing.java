@@ -2,6 +2,14 @@ package org.example;
 
 public class StringProcessing {
 
+    /**
+     * Checks if the provided password is strong.
+     * A strong password must contain at least one uppercase letter,
+     * one lowercase letter, one digit, and one special symbol.
+     *
+     * @param password The password to check.
+     * @return true if the password is strong; false otherwise.
+     */
     public boolean isStrongPassword(String password) {
         if (password == null || password.isEmpty()) {
             return false;
@@ -31,7 +39,12 @@ public class StringProcessing {
         return hasUppercase && hasLowercase && hasDigit && hasSpecialChar;
     }
 
-    // Method to count the number of digits in a sentence
+    /**
+     * Counts the number of digits in the given sentence.
+     *
+     * @param sentence The sentence to analyze.
+     * @return The count of digits in the sentence.
+     */
     public int calculateDigits(String sentence) {
         if (sentence == null) {
             return 0;
@@ -46,7 +59,15 @@ public class StringProcessing {
         return digitCount;
     }
 
-    // Method to count the number of words in a sentence
+
+
+    /**
+     * Calculates the number of words in the given sentence.
+     * Words are considered to be separated by spaces.
+     *
+     * @param sentence The sentence to analyze.
+     * @return The count of words in the sentence.
+     */
     public int calculateWords(String sentence) {
         if (sentence == null || sentence.trim().isEmpty()) {
             return 0;
@@ -56,15 +77,23 @@ public class StringProcessing {
         return words.length;
     }
 
-    // Method to calculate the result of an arithmetic expression
+
+    /**
+     * Evaluates a mathematical expression contained in the given string.
+     *
+     * @param expression The mathematical expression to evaluate.
+     * @return The result of the evaluated expression.
+     * @throws IllegalArgumentException If the expression is invalid.
+     */
     public double calculateExpression(String expression) {
-        // Use JavaScript engine to evaluate the mathematical expression
         try {
             javax.script.ScriptEngineManager mgr = new javax.script.ScriptEngineManager();
             javax.script.ScriptEngine engine = mgr.getEngineByName("JavaScript");
             return Double.parseDouble(engine.eval(expression).toString());
         } catch (Exception e) {
-            throw new IllegalArgumentException("Invalid expression");
+            System.out.println("Error evaluating expression: " + expression);  // Log the problematic expression
+            throw new IllegalArgumentException("Invalid expression: " + expression);
         }
     }
+
 }
