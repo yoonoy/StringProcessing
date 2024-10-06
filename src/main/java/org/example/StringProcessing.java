@@ -91,7 +91,7 @@ public class StringProcessing {
             javax.script.ScriptEngine engine = mgr.getEngineByName("JavaScript");
             return Double.parseDouble(engine.eval(expression).toString());
         } catch (Exception e) {
-            System.out.println("Error evaluating expression: " + expression);  // Log the problematic expression
+            System.out.println("Error evaluating expression: " + expression);
             throw new IllegalArgumentException("Invalid expression: " + expression);
         }
     }
